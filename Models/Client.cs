@@ -16,7 +16,7 @@ namespace RentSomeWheels.Models
         [Required(ErrorMessage = "The phone number is required.")]
         [Phone]
         [RegularExpression(@"^(?:2\d{8}|9[01236]\d{7})$", 
-        ErrorMessage = "Invalid Portuguese landline or mobile phone number format.")]
+        ErrorMessage = "Invalid Portugal phone number format.")]
         public string PhoneNumber { get; set; }
 
         [Required]

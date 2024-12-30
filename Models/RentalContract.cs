@@ -9,11 +9,11 @@ namespace RentSomeWheels.Models
 
         [Required]
         public int ClientId { get; set; }
-        public Client Client { get; set; }
-
+        public Client? Client { get; set; }
+        
         [Required]
         public int VehicleId { get; set; }
-        public Vehicle Vehicle { get; set; }
+        public Vehicle? Vehicle { get; set; }
 
         [Required]
         [DataType(DataType.Date)]

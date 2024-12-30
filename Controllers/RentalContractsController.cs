@@ -60,9 +60,14 @@ namespace RentSomeWheels.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ClientId,VehicleId,StartDate,EndDate,InitialMileage")] RentalContract rentalContract)
         {
-            if (ModelState.IsValid)
+            var client = await _context.Clients.FindAsync(rentalContract.ClientId);
+            var vehicle = await _context.Vehicles.FindAsync(rentalContract.VehicleId);
+
+            rentalContract.Client = client;
+            rentalContract.Vehicle = vehicle;
+
+            if (TryValidateModel(rentalContract))
             {
-                var vehicle = await _context.Vehicles.FindAsync(rentalContract.VehicleId);
                 if (vehicle != null)
                 {
                     vehicle.IsRented = true;
